@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart'; //导入material包
+import 'package:flutter/material.dart';
 
-//搜索页
+///搜索页
 class SearchPage extends StatefulWidget {
   @override
   _SearchPageState createState() => _SearchPageState();

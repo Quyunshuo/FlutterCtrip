@@ -29,9 +29,6 @@ class _TabNavigationState extends State<TabNavigation> {
   Widget build(BuildContext context) {
     //脚手架
     return Scaffold(
-      appBar: AppBar(
-        title: Text('FlutterCtrip'),
-      ),
       //类似于Android中的ViewPage
       body: PageView(
         //页面控制器

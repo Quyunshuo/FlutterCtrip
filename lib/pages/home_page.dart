@@ -1,17 +1,46 @@
-import 'package:flutter/material.dart'; //导入material包
+import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
-//Home页
+///Home页
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  ///轮播图的URL地址
+  List _imageUrls = [
+    'https://pages.ctrip.com/commerce/promote/20180718/yxzy/img/640sygd.jpg',
+    'https://dimg04.c-ctrip.com/images/700u0r000000gxvb93E54_810_235_85.jpg',
+    'https://dimg04.c-ctrip.com/images/700c10000000pdili7D8B_780_235_57.jpg'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('首页'),
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 160,
+              //轮播图BannerWidget
+              child: Swiper(
+                itemCount: _imageUrls.length,
+                //自动播放
+                autoplay: true,
+                //设置item
+                itemBuilder: (BuildContext context, int index) {
+                  return Image.network(
+                    _imageUrls[index],
+                    fit: BoxFit.fill,
+                  );
+                },
+                //添加指示器
+                pagination: SwiperPagination(),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

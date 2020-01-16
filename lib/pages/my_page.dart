@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart'; //导入material包
+import 'package:flutter/material.dart';
 
-//我的页面
+///我的页面
 class MyPage extends StatefulWidget {
   @override
   _MyPageState createState() => _MyPageState();

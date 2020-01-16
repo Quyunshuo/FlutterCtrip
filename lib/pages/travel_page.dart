@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart'; //导入material包
+import 'package:flutter/material.dart';
 
-//旅拍页
+///旅拍页
 class TravelPage extends StatefulWidget {
   @override
   _TravelPageState createState() => _TravelPageState();

@@ -1,3 +1,4 @@
+# 应用或者包名 name很重要，如果修改了name所有的dart的文件的import前引用的本地的文件啊的包名都需要修改
 name: flutter_ctrip
 description: 基于Flutter 高度实现携程App
 
@@ -11,11 +12,14 @@ description: 基于Flutter 高度实现携程App
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# 版本号信息
 version: 1.0.0+1
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
+# 应用或包依赖的其它包或插件
+# 添加依赖packages ^表示适配和当前大版本一致的版本，~表示适配和当前小版本一致的版本
 dependencies:
   flutter:
     sdk: flutter
@@ -24,6 +28,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
+  # 轮播图Banner github:https://github.com/best-flutter/flutter_swiper
+  flutter_swiper: ^1.1.6
+
+# 开发环境依赖的工具包（而不是flutter应用本身依赖的包）
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -33,6 +41,7 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
+# flutter相关的配置选项
 flutter:
 
   # The following line ensures that the Material Icons font is
