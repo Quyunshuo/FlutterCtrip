@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_ctrip/dao/home_dao.dart';
+import 'package:flutter_ctrip/model/home_model.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 /// AppBar的滚动最大距离
@@ -18,8 +21,44 @@ class _HomePageState extends State<HomePage> {
     'https://dimg04.c-ctrip.com/images/700c10000000pdili7D8B_780_235_57.jpg'
   ];
 
-  //顶部AppBar的透明度
+  /// 顶部AppBar的透明度
   double _appBarAlpha = 0.0;
+
+  /// 从服务器请求到的结果
+  String resultString = '';
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  ///获取服务端数据
+  loadData() async {
+    ///方式1
+//    HomeDao.fetch().then((result) {
+//      setState(() {
+//        //将请求结果转为String
+//        resultString = json.encode(result);
+//      });
+//    }).catchError((e) {
+//      setState(() {
+//        resultString = e.toString();
+//      });
+//    });
+
+    ///方式2
+    try {
+    HomeModel model = await HomeDao.fetch();
+    setState(() {
+      resultString = json.encode(model);
+    });
+    } catch (e) {
+      setState(() {
+        resultString = e.toString();
+      });
+    }
+  }
 
   /// 滑动监听的处理
   /// [offset]滚动的逻辑像素
@@ -83,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     height: 800,
                     child: ListTile(
-                      title: Text('hhh'),
+                      title: Text(resultString),
                     ),
                   ),
                 ],
