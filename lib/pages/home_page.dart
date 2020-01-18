@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/dao/home_dao.dart';
 import 'package:flutter_ctrip/model/home_model.dart';
+import 'package:flutter_ctrip/widget/local_nav.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 /// AppBar的滚动最大距离
@@ -27,6 +28,9 @@ class _HomePageState extends State<HomePage> {
   /// 从服务器请求到的结果
   String resultString = '';
 
+  /// 本地导航按钮栏的数据
+  List<LocalNavList> localNavList = [];
+
   @override
   void initState() {
     super.initState();
@@ -49,14 +53,13 @@ class _HomePageState extends State<HomePage> {
 
     ///方式2
     try {
-    HomeModel model = await HomeDao.fetch();
-    setState(() {
-      resultString = json.encode(model);
-    });
-    } catch (e) {
+      HomeModel model = await HomeDao.fetch();
       setState(() {
-        resultString = e.toString();
+        localNavList = model.localNavList;
+        resultString = json.encode(model);
       });
+    } catch (e) {
+      print(e);
     }
   }
 
@@ -85,6 +88,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfff2f2f2),
       body: Stack(
         children: <Widget>[
           MediaQuery.removePadding(
@@ -119,6 +123,11 @@ class _HomePageState extends State<HomePage> {
                         // 添加指示器
                         pagination: SwiperPagination(),
                       )),
+                  //本地导航按钮栏
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
+                    child: LocalNavWidget(localNavList: localNavList),
+                  ),
                   Container(
                     height: 800,
                     child: ListTile(
