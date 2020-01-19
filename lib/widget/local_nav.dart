@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/model/home_model.dart';
+import 'package:flutter_ctrip/widget/webview.dart';
 
 ///本地导航按钮栏的自定义Widget
 class LocalNavWidget extends StatelessWidget {
@@ -42,7 +43,19 @@ class LocalNavWidget extends StatelessWidget {
 
   Widget _item(BuildContext context, LocalNavList model) {
     return GestureDetector(
-      onTap: () {},
+      //点击事件
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => WebView(
+              url: model.url,
+              statusBarColor: model.statusBarColor,
+              hideAppBar: model.hideAppBar,
+            ),
+          ),
+        );
+      },
       child: Column(
         children: <Widget>[
           Image.network(model.icon, width: 32, height: 32),

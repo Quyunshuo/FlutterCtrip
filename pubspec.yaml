@@ -37,6 +37,8 @@ dependencies:
   # 本地存储
   shared_preferences: ^0.5.6
 
+  # WebView
+  flutter_webview_plugin: ^0.3.0+2
 
 # 开发环境依赖的工具包（而不是flutter应用本身依赖的包）
 dev_dependencies:
