@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/dao/home_dao.dart';
+import 'package:flutter_ctrip/model/common_model.dart';
 import 'package:flutter_ctrip/model/home_model.dart';
 import 'package:flutter_ctrip/widget/local_nav.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -29,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   String resultString = '';
 
   /// 本地导航按钮栏的数据
-  List<LocalNavList> localNavList = [];
+  List<CommonModel> localNavList = [];
 
   @override
   void initState() {
@@ -39,24 +40,10 @@ class _HomePageState extends State<HomePage> {
 
   ///获取服务端数据
   loadData() async {
-    ///方式1
-//    HomeDao.fetch().then((result) {
-//      setState(() {
-//        //将请求结果转为String
-//        resultString = json.encode(result);
-//      });
-//    }).catchError((e) {
-//      setState(() {
-//        resultString = e.toString();
-//      });
-//    });
-
-    ///方式2
     try {
       HomeModel model = await HomeDao.fetch();
       setState(() {
         localNavList = model.localNavList;
-        resultString = json.encode(model);
       });
     } catch (e) {
       print(e);

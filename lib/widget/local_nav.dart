@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ctrip/model/home_model.dart';
+import 'package:flutter_ctrip/model/common_model.dart';
 import 'package:flutter_ctrip/widget/webview.dart';
 
 ///本地导航按钮栏的自定义Widget
 class LocalNavWidget extends StatelessWidget {
   ///首页接口的[LocalNavList]数据
-  final List<LocalNavList> localNavList;
+  final List<CommonModel> localNavList;
 
   const LocalNavWidget({Key key, @required this.localNavList})
       : super(key: key);
@@ -41,7 +41,7 @@ class LocalNavWidget extends StatelessWidget {
     );
   }
 
-  Widget _item(BuildContext context, LocalNavList model) {
+  Widget _item(BuildContext context, CommonModel model) {
     return GestureDetector(
       //点击事件
       onTap: () {
